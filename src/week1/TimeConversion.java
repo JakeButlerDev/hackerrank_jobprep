@@ -32,18 +32,19 @@ public class TimeConversion {
             char x = s.charAt(s.length()-2);
             String ans = "";
 
-            if (Character.toLowerCase(x) == 'p') {
-                hour = hour + 12;
+            if (Character.toLowerCase(x) == 'p' && !(s.substring(0, 2).equals("12"))) {
+                hour = hour += 12;
                 String newHour = String.valueOf(hour);
-                ans =  (newHour + s.substring(2, s.length()));
-            } else if ((Character.toLowerCase(x) == 'a') && (s.substring(0, 2) == "12")) {
-                ans =  ("00" + s.substring(3, s.length()));
+                ans = (newHour + s.substring(2, s.length()));
+            } else if ((Character.toLowerCase(x) == 'a') && (s.substring(0, 2).equals("12"))) {
+                ans = ("00" + s.substring(2, s.length()));
+                System.out.println(ans);
             } else {
                 ans = s;
             }
             ans = ans.substring(0, ans.length()-2);
-            System.out.println(ans);
             return ans;
+
         }
 
 
